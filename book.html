@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book — Scania NZ School Services (Mock)</title>
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    // Single-open behavior if data-single present
+    document.querySelectorAll(".accordion[data-single]").forEach((acc) => {
+      const items = Array.from(acc.querySelectorAll("details.acc"));
+      items.forEach((d) => {
+        d.addEventListener("toggle", () => {
+          if (d.open) {
+            items.forEach((x) => {
+              if (x !== d) x.open = false;
+            });
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <img src="assets/img/logo.svg" alt="" width="28" height="28" />
+        <span class="brand-text">Scania New Zealand School Services</span>
+      </a>
+
+      <a href="index.html" class="btn">← Back to Services</a>
+    </div>
+  </header>
+
+  <main id="main" class="section">
+    <div class="container form-shell">
+      <header class="form-header text-center">
+        <p class="eyebrow">Booking</p>
+        <h1 id="service-title">Selected Service</h1>
+        <p class="tiny muted">
+          Not the right one?
+          <a href="index.html">Choose a different service</a>.
+        </p>
+      </header>
+
+      <form id="appt-form" novalidate>
+        <!-- Hidden selected service -->
+        <input type="hidden" id="service" name="service" required />
+
+        <!-- Course info accordion -->
+        <section class="section">
+          <div class="container">
+            <h2 class="section-header">Service Information</h2>
+
+            <div class="accordion" data-single>
+              <!-- remove data-single to allow multiple open -->
+              <details class="acc" open>
+                <summary>
+                  <span>Prerequisites</span>
+                  <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="acc-body">
+                  <ul>
+                    <li>Valid driver licence appropriate to the vehicle.</li>
+                    <li>Basic vehicle operation experience recommended.</li>
+                    <li>
+                      PPE for practical components (hi-vis / safety footwear).
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="acc">
+                <summary>
+                  <span>Service Pricing</span>
+                  <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="acc-body">
+                  <ul>
+                    <li>
+                      <strong>[$XXX] + GST</strong> per person (indicative
+                      mock).
+                    </li>
+                    <li>
+                      Group/on-site pricing available (min 1, max [y]
+                      trainees).
+                    </li>
+                    <li>
+                      Travel or venue fees may apply outside metro areas.
+                    </li>
+                  </ul>
+                </div>
+              </details>
+
+              <details class="acc">
+                <summary>
+                  <span>Course Duration & Contents</span>
+                  <span class="chev" aria-hidden="true"></span>
+                </summary>
+                <div class="acc-body">
+                  <p>
+                    1-day course blending classroom, practical training, and
+                    assessment. Typical units:
+                  </p>
+                  <ul>
+                    <li>Operating [XYZ].</li>
+                    <li>Certification/Endorsement for [ABC].</li>
+                  </ul>
+                </div>
+              </details>
+            </div>
+          </div>
+        </section>
+
+        <!-- Trainee details -->
+        <div class="grid grid-2">
+          <h2 class="section-header">Appointment Details</h2>
+          <div class="field">
+            <label for="firstName">First Name <span class="req" aria-hidden="true">*</span></label>
+            <input id="firstName" name="firstName" type="text" required placeholder="Jane" />
+            <div class="error" data-for="firstName"></div>
+          </div>
+          <div class="field">
+            <label for="lastName">Last Name <span class="req" aria-hidden="true">*</span></label>
+            <input id="lastName" name="lastName" type="text" required placeholder="Doe" />
+            <div class="error" data-for="lastName"></div>
+          </div>
+        </div>
+
+        <div class="grid grid-2">
+          <div class="field">
+            <label for="email">Email Address
+              <span class="req" aria-hidden="true">*</span></label>
+            <input id="email" name="email" type="email" required placeholder="you@company.com" />
+            <div class="error" data-for="email"></div>
+          </div>
+          <div class="field">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" placeholder="+64 ..." />
+          </div>
+        </div>
+
+
+        <!-- Appointment -->
+        <div class="grid grid-2">
+          <div class="field date-field">
+            <label for="date">Preferred appointment date <span class="req" aria-hidden="true">*</span></label>
+
+            <div class="date-input-wrap">
+              <input id="date" name="date" type="date" required aria-describedby="dateHelp" autocomplete="off" />
+              <button type="button" class="dp-toggle" aria-haspopup="dialog" aria-controls="dp-date"
+                aria-label="Open calendar">
+                <!-- simple inline SVG icon -->
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path fill="currentColor"
+                    d="M7 2a1 1 0 0 1 1 1v1h8V3a1 1 0 1 1 2 0v1h1a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h1V3a1 1 0 0 1 1-1Zm12 8H5v9h14v-9ZM5 8h14V6H5v2Z" />
+                </svg>
+              </button>
+            </div>
+
+            <div id="dp-date" class="dp hidden" role="dialog" aria-label="Choose appointment date"></div>
+
+            <div id="dateHelp" class="help tiny muted">Weekends are unavailable.</div>
+            <div class="error" data-for="date"></div>
+          </div>
+
+
+          <!-- keep your time field as-is -->
+          <div class="field">
+            <label for="time">Preferred appointment time <span class="req" aria-hidden="true">*</span></label>
+            <select id="time" name="time" required>
+              <option value="">Select a time</option>
+              <option>9:00am</option>
+              <option>9:30am</option>
+              <option>10:00am</option>
+              <option>10:30am</option>
+              <option>11:00am</option>
+              <option>11:30am</option>
+              <option>12:00pm</option>
+              <option>12:30pm</option>
+              <option>1:00pm</option>
+              <option>1:30pm</option>
+              <option>2:00pm</option>
+              <option>2:30pm</option>
+              <option>3:00pm</option>
+              <option>3:30pm</option>
+              <option>4:00pm</option>
+              <option>4:30pm</option>
+              <option>5:00pm</option>
+              <option>5:30pm</option>
+            </select>
+            <div class="error" data-for="time"></div>
+          </div>
+        </div>
+
+
+        <!-- Comments -->
+        <div class="field">
+          <label for="comments">Comments</label>
+          <textarea id="comments" name="comments" rows="4"
+            placeholder="Any additional comments or questions?"></textarea>
+        </div>
+
+        <div class="actions">
+          <button class="btn btn-primary" type="submit">Submit</button>
+          <div class="submit-status tiny muted" aria-live="polite"></div>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container tiny muted">
+      © <span id="year"></span> Scania New Zealand (Mock)
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const dateEl = document.getElementById("date");
+      const errEl = document.querySelector('.error[data-for="date"]');
+
+      function isWeekendFromInput(input) {
+        // Prefer valueAsDate when available (already a Date)
+        const d = input.valueAsDate
+          ? input.valueAsDate
+          : (() => {
+            if (!input.value) return null;
+            const [y, m, day] = input.value.split("-").map(Number);
+            return new Date(Date.UTC(y, m - 1, day)); // force UTC
+          })();
+        if (!d) return false;
+        const day = d.getUTCDay(); // 0 = Sun, 6 = Sat (UTC)
+        return day === 0 || day === 6; // Sat/Sun only
+      }
+
+      function clearWeekend() {
+        if (!dateEl) return;
+        if (isWeekendFromInput(dateEl)) {
+          dateEl.value = "";
+          dateEl.setCustomValidity(
+            "Weekends are unavailable. Please choose Mon–Fri."
+          );
+          if (dateEl.reportValidity) dateEl.reportValidity();
+          if (errEl)
+            errEl.textContent =
+              "Weekends are unavailable. Please choose Mon–Fri.";
+        } else {
+          dateEl.setCustomValidity("");
+          if (errEl) errEl.textContent = "";
+        }
+      }
+
+      dateEl.addEventListener("change", clearWeekend);
+      dateEl.addEventListener("input", clearWeekend);
+    });
+  </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const params = new URLSearchParams(window.location.search);
+      const s = params.get("service");
+
+      const title = document.getElementById("service-title");
+      const hidden = document.getElementById("service");
+
+      if (s) {
+        if (title) title.textContent = s;
+        if (hidden) hidden.value = s;
+      }
+    });
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const input = document.getElementById('date');
+      const panel = document.getElementById('dp-date');
+      const toggle = document.querySelector('.dp-toggle');
+
+      const blocked = new Set(['2025-12-24', '2025-12-08']); // 24/12/2025 & 08/12/2025
+      const disableWeekends = true;
+
+      if (!input || !panel || !toggle) return;
+
+      function toISO(d) {
+        return new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate()))
+          .toISOString().slice(0, 10);
+      }
+      function isDisabled(d) {
+        const dow = d.getDay();
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // normalize to midnight
+
+        // disable past days and today
+        if (d <= today) return true;
+
+        // disable weekends
+        if (disableWeekends && (dow === 0 || dow === 6)) return true;
+
+        // disable specific blocked dates
+        if (blocked.has(toISO(d))) return true;
+
+        return false;
+      }
+
+
+      let view = input.value ? new Date(input.value + 'T00:00:00') : new Date();
+      view = new Date(view.getFullYear(), view.getMonth(), 1);
+
+      function render() {
+        const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+        const first = new Date(view.getFullYear(), view.getMonth(), 1);
+        const startOffset = (first.getDay() + 6) % 7; // Monday start
+        const start = new Date(first); start.setDate(first.getDate() - startOffset);
+
+        const title = `${monthNames[view.getMonth()]} ${view.getFullYear()}`;
+        let html = `
+      <div class="dp-head">
+        <button type="button" class="dp-nav prev" aria-label="Previous month">‹</button>
+        <div class="dp-title">${title}</div>
+        <button type="button" class="dp-nav next" aria-label="Next month">›</button>
+      </div>
+      <div class="dp-grid">
+        <div class="dow">Mo</div><div class="dow">Tu</div><div class="dow">We</div><div class="dow">Th</div><div class="dow">Fr</div><div class="dow">Sa</div><div class="dow">Su</div>
+    `;
+        const today = new Date();
+        for (let i = 0; i < 42; i++) {
+          const d = new Date(start); d.setDate(start.getDate() + i);
+          const inMonth = d.getMonth() === view.getMonth();
+          const iso = toISO(d);
+          const disabled = isDisabled(d);
+          const selected = input.value && iso === input.value;
+          html += `<button type="button"
+        class="day${inMonth ? '' : ' outside'}${selected ? ' selected' : ''}${disabled ? ' disabled' : ''}"
+        data-iso="${iso}" ${disabled ? 'disabled' : ''}
+        ${toISO(today) === iso ? 'aria-current="date"' : ''}>${d.getDate()}</button>`;
+        }
+        html += `</div>`;
+        panel.innerHTML = html;
+
+        // Stop propagation on any interactions inside the panel
+        panel.querySelectorAll('*').forEach(el => {
+          el.addEventListener('pointerdown', e => e.stopPropagation());
+          el.addEventListener('click', e => e.stopPropagation());
+        });
+
+        // Month nav (prevent outside close before re-render)
+        panel.querySelector('.prev').addEventListener('click', (e) => {
+          e.preventDefault(); e.stopPropagation();
+          view.setMonth(view.getMonth() - 1); render();
+        });
+        panel.querySelector('.next').addEventListener('click', (e) => {
+          e.preventDefault(); e.stopPropagation();
+          view.setMonth(view.getMonth() + 1); render();
+        });
+
+        // Day select
+        panel.querySelectorAll('.day:not(.disabled)').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            input.value = btn.getAttribute('data-iso');
+            input.dispatchEvent(new Event('change', { bubbles: true }));
+            closePanel();
+          });
+        });
+      }
+
+      function openPanel() { panel.classList.remove('hidden'); render(); }
+      function closePanel() { panel.classList.add('hidden'); }
+
+      // Toggle open/close
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault(); e.stopPropagation();
+        panel.classList.contains('hidden') ? openPanel() : closePanel();
+      });
+
+      // Optional: open when focusing the input
+      input.addEventListener('focus', () => openPanel());
+
+      // Don’t close when clicking inside the panel
+      panel.addEventListener('pointerdown', (e) => e.stopPropagation());
+      panel.addEventListener('click', (e) => e.stopPropagation());
+
+      // Close only on real outside interactions (use capture + pointerdown)
+      document.addEventListener('pointerdown', (e) => {
+        const path = e.composedPath ? e.composedPath() : [];
+        if (path.includes(panel) || path.includes(toggle) || path.includes(input)) return;
+        closePanel();
+      }, true);
+
+      // Guard: if users type or a mobile UA opens native picker
+      input.addEventListener('change', () => {
+        if (!input.value) return;
+        const d = new Date(input.value + 'T00:00:00');
+        if (isDisabled(d)) { input.value = ''; const err = document.querySelector('.error[data-for="date"]'); if (err) err.textContent = 'That date is unavailable.'; }
+      });
+    });
+  </script>
+
+
+</body>
+
+</html>

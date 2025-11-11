@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Scania NZ — School Services (Mock)</title>
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#"><img src="assets/img/logo.svg" alt="" width="28" height="28"><span class="brand-text">Scania New Zealand School Services</span></a>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero hero-cover">
+      <div class="container hero-inner">
+        <div class="stack gap-4">
+          <h1 class="display">SCANIA SCHOOL SERVICES</h1>
+          <p class="lead">Choose a service to continue to booking. You’ll fill trainee details and your preferred date/time on the next page.</p>
+        </div>
+        <figure class="hero-media card shadow">
+          <img src="assets/img/hero-flag.jpeg" width="900" height="520" alt="Driver training hero placeholder">
+        </figure>
+      </div>
+      <div class="hero-wave" aria-hidden="true"></div>
+    </section>
+    <!-- SERVICES GALLERY (two rows, scrollable) -->
+    <section class="section">
+      <div class="container">
+        <header class="section-header text-center">
+          <h2>Select a service</h2>
+          <p class="muted tiny">Tap a card to proceed to booking.</p>
+        </header>
+
+        <div class="mobile-gallery" role="listbox" aria-label="Service options">
+          <button class="ctrl left" aria-label="Scroll left" type="button">‹</button>
+          <div class="list" tabindex="0">
+            <div class="row-cards">
+              <a class="card item" role="option" aria-selected="false" href="book.html?service=Class%202%20Truck%20License">
+                <img src="assets/img/svc-truck-lic.jpg" alt="Class 2 Truck License"><div class="text"><p><strong>Class 2 Truck License</strong></p><p><strong>$XXX.XX</strong></p></div>
+              </a>
+              <a class="card item" role="option" aria-selected="false" href="book.html?service=Class%203%20Truck%20License">
+                <img src="assets/img/svc-truck-lic.jpg" alt="Class 3 Truck License"><div class="text"><p><strong>Class 3 Truck License</strong></p><p><strong>$XXX.XX</strong></p></div>
+              </a>
+              <a class="card item" role="option" aria-selected="false" href="book.html?service=Class%204%20Truck%20License">
+                <img src="assets/img/svc-truck-lic.jpg" alt="Class 4 Truck License"><div class="text"><p><strong>Class 4 Truck License</strong></p><p><strong>$XXX.XX</strong></p></div>
+              </a>
+              <a class="card item" role="option" aria-selected="false" href="book.html?service=Class%205%20Truck%20License">
+                <img src="assets/img/svc-truck-lic.jpg" alt="Class 5 Truck License"><div class="text"><p><strong>Class 5 Truck License</strong></p><p><strong>$XXX.XX</strong></p></div>
+              </a>
+              <a class="card item" role="option" aria-selected="false" href="book.html?service=Fatigue%20Management%20%26%20Logbook">
+                <img src="assets/img/logbook.jpg" alt="Fatigue Management & Logbook"><div class="text"><p><strong>Fatigue Management & Logbook</strong></p><p><strong>$XXX.XX</strong></p></div>
+              </a>
+            </div>
+          </div>
+          <button class="ctrl right" aria-label="Scroll right" type="button">›</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container tiny muted">© <span id="year"></span> Scania New Zealand (Mock)</div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

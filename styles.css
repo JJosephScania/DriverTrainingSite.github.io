@@ -1,0 +1,570 @@
+/* Shared styles */
+:root {
+  --bg: #fff;
+  --text: #212b36;
+  --muted: #6b7280;
+  --brand: #468bbf;
+  --border: #e5e7eb;
+  --card: #f8fafc;
+  --radius: 14px;
+  --shadow: 0 10px 20px rgba(2, 6, 23, 0.08), 0 2px 6px rgba(2, 6, 23, 0.06);
+  --step--1: 0.9rem;
+  --step-0: 1rem;
+  --step-1: 1.25rem;
+  --step-2: 1.6rem;
+  --step-3: 2.2rem;
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --maxw: 64rem;
+}
+* {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Inter, Roboto, Arial,
+    sans-serif;
+  font-size: var(--step-0);
+  line-height: 1.6;
+  color: var(--text);
+  background: color-mix(in oklab, var(--bg), #000 2%);
+}
+img {
+  max-width: 100%;
+  display: block;
+}
+a {
+  color: var(--brand);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+.container {
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding-inline: var(--space-4);
+}
+.section {
+  padding: var(--space-12) 0;
+}
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  min-height: 4rem;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-weight: 700;
+  color: inherit;
+}
+.form-shell {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: var(--space-8);
+}
+.form-header h1 {
+  margin: 0 0 0.25rem 0;
+  font-size: var(--step-2);
+}
+.display {
+  font-size: var(--step-3);
+}
+.lead {
+  font-size: var(--step-1);
+}
+.text-center {
+  text-align: center;
+}
+.muted {
+  color: var(--muted);
+}
+.tiny {
+  font-size: var(--step--1);
+}
+.grid {
+  display: grid;
+  gap: var(--space-6);
+}
+.grid-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+@media (max-width: 780px) {
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+}
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+label {
+  font-weight: 600;
+}
+.req {
+  color: #ef4444;
+}
+input,
+select,
+textarea {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 0.75rem 1rem;
+  background: transparent;
+  color: inherit;
+  outline: none;
+}
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 0 3px color-mix(in oklab, var(--brand), #fff 80%);
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--border);
+  padding: 0.8rem 1.2rem;
+  border-radius: 12px;
+  background: transparent;
+}
+.btn-primary {
+  background: var(--brand);
+  border-color: var(--brand);
+  color: #fff;
+}
+.btn-primary:hover {
+  filter: brightness(0.95);
+}
+.actions {
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+.submit-status {
+  min-height: 1.2em;
+}
+.site-footer {
+  padding-block: var(--space-12);
+  border-top: 1px solid var(--border);
+  background: color-mix(in oklab, var(--bg), #000 3%);
+}
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+}
+.skip-link:focus {
+  left: var(--space-4);
+  top: var(--space-4);
+  background: var(--brand);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 10px;
+}
+
+/* Hero */
+/* Hero image frame spans full width with fixed aspect ratio */
+.hero-media {
+  width: 100vw; /* span the entire viewport width */
+  margin-left: 50%; /* center the 100vw block in the page */
+  transform: translateX(-50%);
+  aspect-ratio: 21 / 9; /* wide cinematic look */
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+/* Image fills the frame, cropped without distortion */
+.hero-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Responsive: adjust aspect ratio on smaller screens */
+@media (max-width: 900px) {
+  .hero-media {
+    aspect-ratio: 16 / 9; /* taller on mobile */
+  }
+}
+
+/* Cards / gallery */
+.card {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: var(--space-6) - var(--space-4);
+}
+.shadow {
+  box-shadow: var(--shadow);
+}
+.section-header {
+  margin-bottom: var(--space-8);
+}
+
+.mobile-gallery {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 0.5rem;
+  align-items: center;
+}
+.mobile-gallery .ctrl {
+  appearance: none;
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: 12px;
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+.mobile-gallery .ctrl:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+.mobile-gallery .list {
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding: 1rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--card);
+}
+.mobile-gallery .row-cards {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  padding: 1rem;
+  grid-auto-columns: 70%;
+}
+@media (min-width: 640px) {
+  .mobile-gallery .row-cards {
+    grid-auto-columns: 46%;
+  }
+}
+@media (min-width: 960px) {
+  .mobile-gallery .row-cards {
+    grid-auto-columns: 32%;
+  }
+}
+.item {
+  position: relative;
+  scroll-snap-align: start;
+  cursor: pointer;
+  padding: 0.5rem;
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.item img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+}
+.item .text {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  right: 1rem;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+  border-radius: 5px;
+  padding-top: 5px;
+  padding-right: 3px;
+  padding-bottom: 5px;
+  padding-left: 14px;
+}
+.item:focus-visible {
+  outline: 3px solid var(--brand);
+}
+
+.back-button {
+  margin-bottom: 1rem;
+}
+
+.site-header .nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.div .error {
+  color: red;
+}
+
+/* Accordion */
+.accordion {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.acc {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #e6e6e6;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.acc > summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: var(--space-6);
+  font-weight: 700;
+}
+.acc > summary::-webkit-details-marker {
+  display: none;
+}
+
+.acc[open] > summary {
+  border-bottom: 1px solid var(--border);
+}
+
+.acc .acc-body {
+  padding: var(--space-6);
+  color: var(--text);
+}
+.acc .acc-body ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+.acc .acc-body li {
+  margin: 0.25rem 0;
+}
+
+/* Chevron indicator */
+.acc > summary .chev {
+  inline-size: 1rem;
+  block-size: 1rem;
+  position: relative;
+}
+.acc > summary .chev::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-right: 2px solid var(--muted);
+  border-bottom: 2px solid var(--muted);
+  transform: rotate(45deg);
+  transition: transform 0.18s ease;
+}
+.acc[open] > summary .chev::before {
+  transform: rotate(225deg); /* points up when open */
+}
+.section-header {
+  grid-column: 1 / -1; /* span both columns if ever placed in grid */
+  margin-bottom: 1rem;
+  font-size: var(--step-2);
+  font-weight: 600;
+}
+
+/* hide native calendar icon for this input (we'll use our overlay) */
+#date::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  pointer-events: none;
+}
+#date {
+  background-image: none;
+}
+
+/* container & toggle positioning */
+.date-field {
+  position: relative;
+  width: inherit;
+}
+.date-input-wrap {
+  position: relative;
+}
+
+/* calendar panel */
+.dp {
+  position: absolute;
+  inset: auto auto auto 0;
+  top: calc(100% + 0.4rem);
+  width: 20rem;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  padding: 0.75rem;
+  z-index: 60;
+}
+.hidden {
+  display: none;
+}
+
+.dp-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.dp-title {
+  font-weight: 600;
+}
+.dp-nav {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.25rem 0.5rem;
+  cursor: pointer;
+}
+
+.dp-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+}
+.dp-grid .dow {
+  text-align: center;
+  font-size: 0.85em;
+  color: var(--muted);
+  padding: 0.25rem 0;
+}
+.dp-grid .day {
+  height: 2.25rem;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background: #fff;
+}
+.dp-grid .day:hover {
+  border-color: var(--border);
+}
+.dp-grid .day.outside {
+  color: var(--muted);
+  opacity: 0.6;
+}
+.dp-grid .day[aria-current="date"] {
+  outline: 2px solid color-mix(in oklab, var(--brand), #fff 60%);
+}
+.dp-grid .day.selected {
+  background: color-mix(in oklab, var(--brand), #fff 85%);
+  border-color: var(--brand);
+}
+.dp-grid .day.disabled {
+  color: #9ca3af;
+  background: #f3f4f6;
+  cursor: not-allowed;
+  text-decoration: line-through;
+  opacity: 0.8;
+}
+
+/* close when viewport is small */
+@media (max-width: 480px) {
+  .dp {
+    width: 18rem;
+  }
+}
+
+/* hide native picker button; we’ll use our own */
+#date::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  pointer-events: none;
+}
+#date {
+  background-image: none;
+  padding-right: 2.25rem;
+} /* space for icon */
+
+.date-input-wrap {
+  position: relative;
+}
+.dp-toggle {
+  position: absolute;
+  right: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  background: none;
+  padding: 0;
+  width: 2.75rem;
+  height: 1.75rem;
+  display: inline-grid;
+  place-items: center;
+  color: var(--muted);
+  cursor: pointer;
+}
+.dp-toggle:hover {
+  color: var(--text);
+}/* --- DATE FIELD (half row, icon inside input) --- */
+
+/* remove the full-row override */
+.grid.grid-2 .date-field {
+  grid-column: auto; /* keep normal half-row width */
+}
+
+/* ensure wrapper behaves normally */
+.date-field { position: relative; }
+.date-input-wrap { position: relative; width: 100%; }
+
+/* hide native picker icon */
+#date::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  pointer-events: none;
+}
+#date {
+  background-image: none;
+  width: 100%;              /* fill its half of the grid */
+  padding-right: 2.5rem;    /* reserve space for custom icon */
+  box-sizing: border-box;
+}
+
+/* calendar icon inside the field */
+.date-input-wrap .dp-toggle {
+  position: absolute;
+  top: 50%;
+  right: 0.75rem;
+  transform: translateY(-50%);
+  width: 1.75rem;
+  height: 1.75rem;
+  display: inline-grid;
+  place-items: center;
+  border: 0;
+  background: none;
+  padding: 0;
+  color: var(--muted);
+  cursor: pointer;
+}
+.date-input-wrap .dp-toggle:hover {
+  color: var(--text);
+}
